@@ -14,6 +14,16 @@ qm set 5000 --boot c --bootdisk scsi0
 qm template 5000
 ```
 
+## template 생성 후 실행 방법
+
+```bash
+git clone https://github.com/ymir0804/proxmox.git
+cd proxmox
+tofu init
+tofu plan
+tofu apply
+```
+
 
 ## Variables 
 terraform.tfvars 파일 생성 후 해당 파일에 다음과 같이 조건을 넣어야 해당 스크립트가 수행됩니다.
