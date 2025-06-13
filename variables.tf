@@ -1,39 +1,52 @@
-variable "pm_api_url" {
-  description = "Proxmox API URL"
+variable "proxmox_api_url" {
+  description = "https://proxmox.example.com:8006/api2/json"
   type        = string
-  default     = "https://192.168.0.170:8006/api2/json"
+  default     = "https://192.168.0.13:8006/api2/json"  
 }
 
-variable "pm_user" {
-  description = "Proxmox username"
+variable "proxmox_user" {
+  description = "Proxmox API username (e.g., root@pam)"
+  type        = string
+  default     = "root@pam"
+}
+
+variable "proxmox_password" {
+  description = "Proxmox API password"
+  type        = string
+  sensitive   = true
+}
+
+variable "proxmox_node_name" {
+  description = "The Proxmox node to deploy VMs on"
+  type        = string
+  default     = "pve"
+}
+
+variable "vm_template_name" {
+  description = "The name of the VM template in Proxmox"
+  type        = string
+  default     = "ubuntu-24.04"
+}
+
+variable "vm_bridge" {
+  description = "The network bridge for the VMs"
+  type        = string
+  default     = "vmbr0"
+}
+
+variable "vm_storage_pool" {
+  description = "The storage pool for VM disks"
+  type        = string
+  default     = "local"
+}
+
+variable "ssh_public_key" {
+  description = "SSH public key to inject into VMs via Cloud-Init"
   type        = string
 }
 
-variable "pm_password" {
-  description = "Proxmox password"
+variable "default_user" {
+  description = "Default user for Cloud-Init"
   type        = string
-}
-
-variable "master_vm_memory" {
-  description = "Memory for master VM"
-  type        = number
-  default     = 15360
-}
-
-variable "worker_vm_memory" {
-  description = "Memory for worker VMs"
-  type        = number
-  default     = 24567
-}
-
-variable "master_vm_cores" {
-  description = "Cores for master VM"
-  type        = number
-  default     = 4
-}
-
-variable "worker_vm_cores" {
-  description = "Cores for worker VMs"
-  type        = number
-  default     = 12
+  default     = "kubeadm"
 }

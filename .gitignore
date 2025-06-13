@@ -4,11 +4,11 @@
 ### Terraform ###
 # Local .terraform directories
 **/.terraform/*
-
+*..terraform.*
 # .tfstate files
 *.tfstate
 *.tfstate.*
-
+terraform.*
 # Crash log files
 crash.log
 crash.*.log
